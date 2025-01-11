@@ -1,0 +1,30 @@
+=====================================================================
+Assignment: Lab 0
+OK, version v1.18.1
+=====================================================================
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Running tests
+
+---------------------------------------------------------------------
+Doctests for ilove61a
+
+>>> ilove61a() # .Case 1
+
+# Error: expected
+#     'I love CS 61A!'
+# but got
+
+:( Test Case 1 failed
+---------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Test summary
+    0 test cases passed before encountering first failed test case
+
+Backup... 0.0% completeBackup... 100% complete
+[31mBackup past deadline by 1075 days, 19 hours, 43 minutes, and 14 seconds[0m
+[32mBackup successful for user: lloydgyt@outlook.com[0m
+[32mURL: https://okpy.org/cal/cs61a/sp22/lab00/backups/mGRo79[0m
+
