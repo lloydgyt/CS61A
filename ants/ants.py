@@ -32,7 +32,6 @@ class Place:
 
     def add_insect(self, insect):
         """
-        # FIXME why use ant's method to set the attribute of place?
         Asks the insect to add itself to the current place. This method exists so
             it can be enhanced in subclasses.
         """
@@ -43,8 +42,7 @@ class Place:
         Asks the insect to remove itself from the current place. This method exists so
             it can be enhanced in subclasses.
         """
-        print(f"DEBUG: invoke insect.remove_from()")
-        insect.remove_from(self)
+        insect.remove_from(self) # this can only change the attrs of ants
 
     def __str__(self):
         return self.name
@@ -97,7 +95,6 @@ class Insect:
         self.place = place
 
     def remove_from(self, place):
-        print(f"DEBUG: set self.place to None")
         self.place = None
 
     def __repr__(self):
@@ -277,7 +274,7 @@ class LongThrower(ThrowerAnt):
 
     name = 'Long'
     food_cost = 2
-    min_range = 5 # TODO a random big number? my implementation is weird
+    min_range = 5
     max_range = 10000000
     # BEGIN Problem 4
     implemented = True   # Change to True to view in the GUI
@@ -312,13 +309,8 @@ class FireAnt(Ant):
         if self.health <= amount:
             reflected_damage += self.damage
         # reflect damage
-        bees_copy = self.place.bees[:]
-        for bc in bees_copy:
-            for b in self.place.bees:
-                if b is bc:
-                    bc.reduce_health(reflected_damage)
-            # TODO mutation when iterating a list
-            # print(f"DEBUG: bees' health = {b.health}")
+        for bc in self.place.bees.copy():
+            bc.reduce_health(reflected_damage)
         # reduce health of the ant
         super().reduce_health(amount)
         # END Problem 5
@@ -463,11 +455,9 @@ class QueenAnt(ScubaThrower):  # You should change this line
         # BEGIN Problem 12
         super().action(gamestate)
         place = self.place.exit
-        # TODO how to represent end of tunnel?
         while place != None:
             ant = place.ant
             place = place.exit
-            # TODO check my answer here, it's inelegant
             if ant is None:
                 continue
             if ant.is_container: # check ant inside
